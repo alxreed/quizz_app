@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_app/widgets/custom_text.dart';
+import 'package:quizz_app/widgets/page_quizz.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -20,9 +22,31 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-
+            new Card(
+              elevation: 10,
+              child: new Container(
+                height: MediaQuery.of(context).size.width * 0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: new Image.asset(
+                  "quizz assets/cover.jpg",
+                  fit: BoxFit.cover
+                ),
+              ),
+            ),
+            new RaisedButton(
+              onPressed: () {
+                Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) {
+                  return new PageQuizz();
+                }));
+              },
+              child: new CustomText(
+                "Commencer le quizz",
+                factor: 1.5,
+                ),
+              color: Colors.blue,
+            )
           ],
         ),
       ),
